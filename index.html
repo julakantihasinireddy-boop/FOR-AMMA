@@ -3,57 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Mother's Day, Amma!</title>
+    <title>Happy Mother's Day!</title>
     <style>
-        body {
-            background-color: #d32f2f; /* Deep Red Background */
-            color: white;
-            text-align: center;
-            font-family: 'Arial', sans-serif;
-            padding: 20px;
-            overflow-x: hidden;
-        }
-        .card {
-            background: white;
-            color: #333;
-            max-width: 500px;
-            margin: 50px auto;
-            padding: 30px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-        }
-        h1 { color: #d32f2f; margin-bottom: 10px; }
-        .message { font-size: 1.2rem; line-height: 1.6; }
-        .heart-bg {
-            font-size: 30px;
-            position: fixed;
-            top: -10%;
-            z-index: -1;
-            user-select: none;
-            animation: fall 5s linear infinite;
-        }
-        @keyframes fall {
-            to { transform: translateY(110vh); }
-        }
+        body { background-color: #d32f2f; color: white; text-align: center; font-family: 'Arial', sans-serif; padding: 20px; }
+        .card { background: white; color: #333; max-width: 500px; margin: 50px auto; padding: 30px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); display: none; }
+        .btn { background: #d32f2f; color: white; border: none; padding: 15px 30px; font-size: 20px; border-radius: 50px; cursor: pointer; margin: 10px; }
+        .btn-hate { background: #ccc; cursor: not-allowed; }
+        #initial-screen { margin-top: 100px; }
+        #second-screen { display: none; margin-top: 100px; }
+        img { width: 100%; border-radius: 15px; margin-bottom: 15px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
     </style>
 </head>
 <body>
 
-    <div class="heart-bg" style="left:10%; animation-delay:0s;">❤️</div>
-    <div class="heart-bg" style="left:30%; animation-delay:2s;">💖</div>
-    <div class="heart-bg" style="left:70%; animation-delay:1s;">❤️</div>
-    <div class="heart-bg" style="left:90%; animation-delay:3s;">💕</div>
-
-    <div class="card">
-        <h1>Happy Mother's Day!</h1>
-        <h3>ప్రియమైన అమ్మకు,</h3>
-        <p class="message">
-            "అమ్మ అంటే ప్రేమ, అమ్మ అంటే రక్షణ. <br>
-            నా జీవితంలో నువ్వు ఉండటం నా అదృష్టం."
-        </p>
-        <p>You are the strongest and most loving person I know. Thank you for always believing in me!</p>
-        <div style="font-size: 40px;">💐🌹💐</div>
+    <div id="initial-screen">
+        <button class="btn" onclick="showSecond()">OPEN SURPRISE 🎁</button>
     </div>
 
+    <div id="second-screen">
+        <h1>I LOVE YOU MAA ❤️</h1>
+        <button class="btn" onclick="showFinal()">SAY TO ME</button>
+    </div>
+
+    <div id="final-screen" class="card">
+        <h2>I Love You Too! 😘</h2>
+        <div style="margin-bottom: 20px;">
+            <button class="btn" style="background: #4caf50;">I Love You Too</button>
+            <button class="btn btn-hate" onclick="alert('You cant click this! 😜')">I Hate You</button>
+        </div>
+        
+        <hr>
+        <h3>ప్రియమైన అమ్మకు,</h3>
+        <p>"అమ్మ అంటే ప్రేమ, అమ్మ అంటే రక్షణ."</p>
+
+        <img src="WhatsApp Image 2026-05-09 at 3.12.18 PM.jpeg">
+        <img src="WhatsApp Image 2026-05-09 at 3.12.17 PM (1).jpeg">
+        <img src="WhatsApp Image 2026-05-09 at 3.12.16 PM.jpeg">
+        
+        <p>You are the best Amma in the world! 💐</p>
+    </div>
+
+    <script>
+        function showSecond() {
+            document.getElementById('initial-screen').style.display = 'none';
+            document.getElementById('second-screen').style.display = 'block';
+        }
+        function showFinal() {
+            document.getElementById('second-screen').style.display = 'none';
+            document.getElementById('final-screen').style.display = 'block';
+        }
+    </script>
 </body>
 </html>
