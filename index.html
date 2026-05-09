@@ -6,55 +6,83 @@
     <title>Happy Mother's Day!</title>
     <style>
         body { background-color: #d32f2f; color: white; text-align: center; font-family: 'Arial', sans-serif; padding: 20px; }
-        .card { background: white; color: #333; max-width: 500px; margin: 20px auto; padding: 25px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); display: none; }
-        .btn { background: #d32f2f; color: white; border: none; padding: 15px 30px; font-size: 20px; border-radius: 50px; cursor: pointer; margin: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
+        .card { background: white; color: #333; max-width: 500px; margin: 20px auto; padding: 25px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+        .btn { background: #d32f2f; color: white; border: none; padding: 15px 30px; font-size: 18px; border-radius: 50px; cursor: pointer; margin: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
         .btn-hate { background: #ccc; cursor: not-allowed; }
-        #initial-screen, #second-screen { margin-top: 100px; }
-        #second-screen { display: none; }
-        img, video { width: 100%; border-radius: 15px; margin-bottom: 20px; }
+        .hidden { display: none; }
+        img, video { width: 100%; border-radius: 15px; margin-top: 15px; }
+        h1, h2 { margin-top: 20px; }
     </style>
 </head>
 <body>
 
-    <div id="initial-screen">
-        <button class="btn" onclick="showSecond()">OPEN SURPRISE 🎁</button>
+    <div id="step1">
+        <button class="btn" style="margin-top:100px;" onclick="showStep(2)">OPEN SURPRISE 🎁</button>
     </div>
 
-    <div id="second-screen">
-        <h1>I LOVE YOU MAA ❤️</h1>
-        <button class="btn" onclick="showFinal()">SAY TO ME</button>
+    <div id="step2" class="hidden">
+        <h1 style="margin-top:100px;">I LOVE YOU MAA ❤️</h1>
+        <button class="btn" onclick="showStep(3)">SAY TO ME</button>
     </div>
 
-    <div id="final-screen" class="card">
-        <h2>I Love You Too! 😘</h2>
-        <div style="margin-bottom: 20px;">
-            <button class="btn" style="background: #4caf50;">I Love You Too</button>
-            <button class="btn btn-hate" onclick="alert('You cant click this! 😜')">I Hate You</button>
+    <div id="step3" class="hidden">
+        <div class="card">
+            <h2>I Love You Too! 😘</h2>
+            <div style="margin-bottom: 20px;">
+                <button class="btn" style="background: #4caf50;">I Love You Too</button>
+                <button class="btn btn-hate" onclick="alert('You cant click this! 😜')">I Hate You</button>
+            </div>
+            <hr>
+            <video controls>
+                <source src="WhatsApp Video 2026-05-09 at 3.12.12 PM.mp4" type="video/mp4">
+            </video>
+            <button class="btn" onclick="showStep(4)">NEXT</button>
         </div>
-        
-        <hr>
-        <h3>ప్రియమైన అమ్మకు,</h3>
-        <p>"అమ్మ అంటే ప్రేమ, అమ్మ అంటే రక్షణ."</p>
+    </div>
 
-        <video controls>
-          <source src="WhatsApp Video 2026-05-09 at 3.12.12 PM.mp4" type="video/mp4">
-        </video>
+    <div id="step4" class="hidden">
+        <div class="card">
+            <h1>A Kiss to You! 💋😘</h1>
+            <button class="btn" onclick="showStep(5)">NEXT</button>
+        </div>
+    </div>
 
-        <img src="WhatsApp Image 2026-05-09 at 3.12.18 PM.jpeg">
-        <img src="WhatsApp Image 2026-05-09 at 3.12.17 PM.jpeg">
-        <img src="WhatsApp Image 2026-05-09 at 3.12.16 PM.jpeg">
-        
-        <p>You are the best Amma in the world! 💐</p>
+    <div id="step5" class="hidden">
+        <div class="card">
+            <h1>Give Kiss to Me! 🥰</h1>
+            <button class="btn" onclick="showStep(6)">NEXT</button>
+        </div>
+    </div>
+
+    <div id="step6" class="hidden">
+        <div class="card" style="background: #fff0f5; border: 5px solid #d32f2f;">
+            <h1 style="color: #d32f2f;">Happy Mother's Day Maa! ❤️</h1>
+            <p style="font-size: 1.2rem; color: #333;">You are the heart of our home and the soul of my world.</p>
+            <button class="btn" onclick="showStep(7)">SEE OUR PHOTOS 📸</button>
+        </div>
+    </div>
+
+    <div id="step7" class="hidden">
+        <div class="card">
+            <h3>ప్రియమైన అమ్మకు,</h3>
+            <p>"అమ్మ అంటే ప్రేమ, అమ్మ అంటే రక్షణ."</p>
+            <img src="WhatsApp Image 2026-05-09 at 3.12.18 PM.jpeg">
+            <img src="WhatsApp Image 2026-05-09 at 3.12.17 PM.jpeg">
+            <img src="WhatsApp Image 2026-05-09 at 3.12.16 PM.jpeg">
+            <p>You are the best Amma in the world! 💐</p>
+        </div>
     </div>
 
     <script>
-        function showSecond() {
-            document.getElementById('initial-screen').style.display = 'none';
-            document.getElementById('second-screen').style.display = 'block';
-        }
-        function showFinal() {
-            document.getElementById('second-screen').style.display = 'none';
-            document.getElementById('final-screen').style.display = 'block';
+        function showStep(stepNumber) {
+            // Hide all steps
+            for(let i=1; i<=7; i++) {
+                let step = document.getElementById('step' + i);
+                if(step) step.classList.add('hidden');
+            }
+            // Show the specific step
+            document.getElementById('step' + stepNumber).classList.remove('hidden');
+            window.scrollTo(0,0);
         }
     </script>
 </body>
